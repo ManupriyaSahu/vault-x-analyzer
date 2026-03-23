@@ -3,6 +3,7 @@ import zxcvbn from 'zxcvbn';
 import CryptoJS from 'crypto-js';
 import axios from 'axios';
 import './App.css';
+import logo from './logo.png';
 
 function App() {
   const [password, setPassword] = useState('');
@@ -46,7 +47,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Vault-X Pro</h1>
+        <div className="logo-container">
+          <img src={logo} alt="Vault-X Pro Logo" className="app-logo" />
+        </div>
         
         <div className="input-container">
           <input 

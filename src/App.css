@@ -88,3 +88,14 @@
 }
 
 .warning-text { color: #f9ca24; border-left: 2px solid #f9ca24; padding-left: 10px; }
+.app-logo {
+  max-width: 300px; /* आप अपनी पसंद के हिसाब से एडजस्ट कर सकते हैं */
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
