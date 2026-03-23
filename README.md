@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# 🛡️ Vault-X Pro: Cyber Security Password Analyzer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Vault-X is an advanced web-based security application designed to evaluate password strength and detect credential exposure. This tool helps users move beyond simple character-set requirements by focusing on **entropy** and **real-world leak data**.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 📝 Project Overview
+* **Problem Statement:** 81% of data breaches are caused by weak or reused passwords. Most users rely on predictable patterns that are easily cracked by modern brute-force tools.
+* **Objective:** To provide a privacy-first platform where users can assess their digital hygiene without compromising their sensitive data.
+* **Solution:** A React-based application utilizing the `zxcvbn` library for realistic strength estimation and the `Have I Been Pwned` API for breach detection.
 
-### `npm start`
+## 🚀 Core Features
+- **Real-time Strength Meter:** Dynamically calculates password complexity (Score 0-4).
+- **Breach Detection:** Checks if a password has appeared in known data leaks using the k-Anonymity protocol.
+- **Entropy Visualization:** Displays the mathematical "bits of entropy" ($E = \log_2(R^L)$) to show true randomness.
+- **Secure Generator:** Uses the `window.crypto` API (CSPRNG) to generate unbreakable, high-entropy passwords.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠️ Technical Implementation (Security Logic)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 1. k-Anonymity Protocol (Privacy)
+To ensure the user's password never leaves the browser, we implement the **k-Anonymity** model:
+- The password is converted into a **SHA-1 Hash** locally.
+- Only the **first 5 characters** of the hash are sent to the HIBP API.
+- The API returns a list of matching prefixes, and the final comparison happens **locally** in the user's browser.
+- **Result:** The full password or full hash is never exposed to the network.
 
-### `npm test`
+### 2. Entropy vs. Complexity
+Unlike standard meters that just look for "1 Uppercase/1 Number," Vault-X uses pattern matching (dictionary words, sequences, and repeat characters) to simulate how a professional cracker would approach the password.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 💻 Installation & Setup
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/ManupriyaSahu/vault-x-analyzer.git](https://github.com/ManupriyaSahu/vault-x-analyzer.git)
